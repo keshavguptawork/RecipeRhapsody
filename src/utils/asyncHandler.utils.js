@@ -14,7 +14,7 @@
 
 // export {asyncHandler}
 
-// *************************** prod approach ************************
+// *************************** PROD approach ************************
 
 const asyncHandler = (requestHandler) => {
   return (req, res, next) => {

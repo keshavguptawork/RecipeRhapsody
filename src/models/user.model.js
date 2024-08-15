@@ -47,7 +47,7 @@ const userSchema = new Schema({
 userSchema.pre("save", async function(next){     // async cuz hashing takes time, next so that it can be passed to next request i.e. save
   if(!this.isModified("password")) return next(); // ensures this pre MW only runs when password is modified
 
-  this.password = bcrypt.hash(this.password, 10)
+  this.password = await bcrypt.hash(this.password, 10)
   next()
 })
 
