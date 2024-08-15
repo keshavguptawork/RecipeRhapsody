@@ -83,12 +83,12 @@ const registerUser = asyncHandler( async(req, res) => {
   
 })
 
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = asyncHandler( async(req, res) => {
   // extract data from req body
-  const {username, email, password} = req.body
+  const { username, email, password } = req.body
 
   // find if it is username or email
-  if(!username || !email){
+  if(!(username || email)){
     throw new ApiError(400, "username or email is required")
   }
 
@@ -97,11 +97,11 @@ const loginUser = asyncHandler(async (req, res) => {
     $or: [{username}, {email}]
   })
   if(!userFound){
-    throw new ApiError(400, "User doesn't exist!")
+    throw new ApiError(400, "User does not exist!")
   }
   
   // password check
-  const isPassValid = await user.isPasswordCorrect(password)
+  const isPassValid = await userFound.isPasswordCorrect(password)
   if(!isPassValid){
     throw new ApiError(401, "Invalid user credential")
   }
@@ -110,12 +110,12 @@ const loginUser = asyncHandler(async (req, res) => {
   const {userAccessToken, userRefreshToken} = await generateAccessAndRefreshToken(userFound._id)
 
   // send these tokens as cookies
-  const loggedInUser = await User.findById(user._id).select("-password -refreshToken") // retrieve same user which has new data (tokens)
+  const loggedInUser = await User.findById(userFound._id).select("-password -refreshToken") // retrieve same user which has new data (tokens)
   const cookieFlags = { httpOnly: true, secure: true } // make cookies editable by server ONLY
   return res
     .status(200)
     .cookie("accessToken", userAccessToken, cookieFlags)
-    .cookie("refreshToken", userRefreshToken. cookieFlags)
+    .cookie("refreshToken", userRefreshToken, cookieFlags)
     .json(
       new ApiResponse(
         200, {
