@@ -14,7 +14,7 @@ const registerUser = asyncHandler( async(req, res) => {
   }
 
   // check if user already exits based on username/email
-  const existingUser = User.findOne({ // using User mongoose model to find an object whcih has following username or email
+  const existingUser = await User.findOne({ // using User mongoose model to find an object whcih has following username or email
     $or: [{ username }, { email }]
   })
   if(existingUser){
@@ -23,11 +23,16 @@ const registerUser = asyncHandler( async(req, res) => {
 
   // check for images, check for avatar
   const avatarLocalPath = req.files?.avatar[0]?.path       // chaining to see whether resources are available?
-  const coverImageLocalPath = req.files?.coverImage[0]?.path    // console log req.files
+  
+
   if(!avatarLocalPath){
     throw new ApiError(400, "Avatar file is required!")
   }
-  
+  let coverImageLocalPath; // const coverImageLocalPath = req.files?.coverImage[0]?.path
+  if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+    coverImageLocalPath = req.files.coverImage[0].path
+  }
+
   // upload them to cloudinary, validate avatar
   const avatar = await uploadOnCloudinary(avatarLocalPath)
   const coverImage = await uploadOnCloudinary(coverImageLocalPath)

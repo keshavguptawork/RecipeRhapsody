@@ -3,7 +3,7 @@ import dotenv from "dotenv"                           // experimentsl feature
 import connectDB from "./db/index.db.js";
 import { app } from "./app.js";
 
-dotenv.config({path: './env'})
+dotenv.config({path: './.env'})
 
 connectDB() // returns a promise as we have written a async function
 .then(() => {
