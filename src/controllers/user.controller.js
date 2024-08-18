@@ -56,7 +56,7 @@ const registerUser = asyncHandler( async(req, res) => {
   const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
   if(!avatar){ 
-    throw new ApiError(400, "Avatar file is required!")
+    throw new ApiError(500, "Something went wrong while uploading avatar")
   }
 
   // create user object - create entry in db
@@ -69,7 +69,7 @@ const registerUser = asyncHandler( async(req, res) => {
     password
   })
   
-  // check for user response & remove password, refresh token
+  // check for user and response & remove password, refresh token
   const newUser = await User.findById(user._id).select(
     "-password -refreshToken"
   )
@@ -245,7 +245,7 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
 
   const avatar = await uploadOnCloudinary(avatarLocalPath)
   if(!avatar.url){
-    throw new ApiError(400, "Error while uploading the avatar")
+    throw new ApiError(500, "Error while uploading the avatar")
   }
   const user = await User.findByIdAndUpdate(
     req.user?._id,
@@ -271,7 +271,7 @@ const updateUserCoverImage = asyncHandler(async(req, res) => {
 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath)
   if(!coverImage.url){
-    throw new ApiError(400, "Error while uploading the cover image")
+    throw new ApiError(500, "Error while uploading the cover image")
   }
   const user = await User.findByIdAndUpdate(
     req.user?._id,
