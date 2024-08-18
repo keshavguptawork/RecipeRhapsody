@@ -214,7 +214,7 @@ const getCurrentUser = asyncHandler(async(req, res) => {
 
 })
 
-const upadteAccountDetails = asyncHandler(async(req, res) => {
+const updateAccountDetails = asyncHandler(async(req, res) => {
   const {fullName, email} = req.body
   if(!fullName || !email){
     throw new ApiError(400, "New full-name/email is required")
@@ -296,7 +296,7 @@ export {
   refreshAccessToken, 
   changeCurrentPassword, 
   getCurrentUser,
-  upadteAccountDetails,
+  updateAccountDetails,
   updateUserAvatar,
   updateUserCoverImage
 }
