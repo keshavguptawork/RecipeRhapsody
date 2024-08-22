@@ -1,7 +1,7 @@
-# YouTube Clone (backend only)
+# YouTube Clone (backend only) --> IN PROGRESS
 Used tech stack for this project: **MongoDB, Express, Node**
 
-### Core packages
+## Core packages
 1. **bcrypt**: for password hashing
 2. **cloudinary**: for storing images separately on cloud
 3. **cookie-parser**: to parse cookie header
@@ -11,16 +11,25 @@ Used tech stack for this project: **MongoDB, Express, Node**
 7. **mongoose**: ODM for mongoDB
 8. **multer**: for uploading on server temporarily
 
-### Features
-1. Login/Register
-2. Upload video
-3. Search video by channel name
-4. Search video by title
-5. Subscribe/Unsubscribe from channels
-6. Edit profile (avatar, cover)
-7. Watch History
+## Features 
+- Login/Register -->  ![Static Badge](https://img.shields.io/badge/status-available-green)
+- Edit profile --> ![Static Badge](https://img.shields.io/badge/status-available-green)
+- Homepage --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
+- Recommendation page --> ![Static Badge](https://img.shields.io/badge/status-planned-white)
+- Watch History --> ![Static Badge](https://img.shields.io/badge/status-available-green)
+---
+- Upload video --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
+- Make a playlist --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
+- View video --> ![Static Badge](https://img.shields.io/badge/status-planned-white)
+- Share Video --> ![Static Badge](https://img.shields.io/badge/status-planned-white)
+---
+- Search video by channel name/title --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
+---
+- Subscribe/Unsubscribe from channels --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
+- Add or view comments --> ![Static Badge](https://img.shields.io/badge/status-in_progress-blue)
 
-### Setup and run development server
+
+## Setup and run development server
 1. Clone this repo
 ```shell
 git clone https://github.com/keshavguptawork/project-y.git
