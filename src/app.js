@@ -11,7 +11,7 @@ app.use(cors({
 
 app.use(express.json({limit: "16kb"})) // limiting json input to only 16kb
 app.use(express.urlencoded({extended: true, limit: "16kb"})) // to receive url and encode them
-app.use(express.static("public")) // declaring a public asset for storing files, images which will be available to all, like favicon, images
+app.use(express.static("public")) // declaring a public asset directory for storing files, images which will be available to all, like favicon, images
 app.use(cookieParser())
 
 // routes import
