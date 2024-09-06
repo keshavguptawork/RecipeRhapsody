@@ -1,12 +1,16 @@
 import mongoose, { model, Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const videoSchema = new Schema({
-  videoFile: {
-    type: String, // cloudiinary url
+const recipeSchema = new Schema({
+  recipeContent: {
+    type: String, 
     required: true
   },
   thumbnail: {
+    type: String, // cloudinary url
+    required: true
+  },
+  pictures: {
     type: String, // cloudinary url
     required: true
   },
@@ -37,6 +41,6 @@ const videoSchema = new Schema({
 
 }, {timestamps: true})
 
-videoSchema.plugin(mongooseAggregatePaginate) // will be used to write complex queries
+recipeSchema.plugin(mongooseAggregatePaginate) // will be used to write complex queries
 
-export const Video = model("Video", videoSchema)
+export const Recipe = model("Recipe", recipeSchema)

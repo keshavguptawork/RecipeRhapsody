@@ -46,13 +46,13 @@ Used tech stack for this project: **MongoDB, Express, Node**
 1. Clone this repo
 
 ```shell
-git clone https://github.com/keshavguptawork/project-y.git
+git clone https://github.com/keshavguptawork/RecipeRhapsody.git
 ```
 
 2. Navigate to repo directory
 
 ```shell
-cd project-y
+cd RecipeRhapsody
 ```
 
 3. Create a `.env` file at the root directory with the following contents
